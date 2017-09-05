@@ -8,7 +8,7 @@ m	pac-man spawn
 f	fruit spawn
 
 Map is 28x31 (width of 28, height of 31)
-
+240 dots, 4 powerups (can be converted to dots for homework)
 Notes: 
 Only ghosts can move through a gate tile
 Ghosts, Pac-Man, and Fruit should be moved half a tile to the right when spawned, this is how they begin centered.
