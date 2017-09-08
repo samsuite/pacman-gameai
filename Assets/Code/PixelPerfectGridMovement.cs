@@ -111,6 +111,38 @@ public class PixelPerfectGridMovement : MonoBehaviour {
                         break;
 
                 }
+
+
+                switch (current_direction) {
+
+                    case Direction.up:
+                        if (!can_move_up()) {
+                            current_direction = Direction.none;
+                        }
+                        break;
+
+                    case Direction.down:
+                        if (!can_move_down()) {
+                            current_direction = Direction.none;
+                        }
+                        break;
+
+                    case Direction.left:
+                        if (!can_move_left()) {
+                            current_direction = Direction.none;
+                        }
+                        break;
+
+                    case Direction.right:
+                        if (!can_move_right()) {
+                            current_direction = Direction.none;
+                        }
+                        break;
+
+                    default:
+                        break;
+
+                }
             }
             else {
                 switch (desired_direction) {
