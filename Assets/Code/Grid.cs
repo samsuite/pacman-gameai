@@ -170,6 +170,14 @@ public class Grid : Singleton<Grid> {
 		spawnedObjects.Clear();
 	}
 
+    public int GetGridX (float xpos) {
+        return Mathf.RoundToInt((xpos+(grid_width*tile_size*0.5f))/Grid.tile_size);// + grid_width/2;
+    }
+
+    public int GetGridY (float ypos) {
+        return Mathf.RoundToInt((ypos+(grid_height*tile_size*0.5f))/Grid.tile_size);// + grid_height/2;
+    }
+
 	public bool IsWall(int x, int y){
 		return tiles[x,y] == 'w';
 	}
