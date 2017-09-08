@@ -67,7 +67,7 @@ public class Grid : Singleton<Grid> {
 				char tileKey;
 				char.TryParse(tileChars[x], out tileKey);
 				//If grid width or height is too small it will OutOfRangeException
-				tiles[x,y] = tileKey;
+				tiles[x, grid_height - y - 1] = tileKey;
 			}
 		}
 	}
@@ -80,7 +80,7 @@ public class Grid : Singleton<Grid> {
 	void SetupMap(){
 		//Map objects are loaded into world
 		//Fits into debug grid
-		Vector3 offset = new Vector3(- (grid_width - 1) * .5f * tile_size, (grid_height - 1) * .5f * tile_size, 0);
+		Vector3 offset = new Vector3(- (grid_width - 1) * .5f * tile_size, - (grid_height - 1) * .5f * tile_size, 0);
 		spawnedObjects = new List<GameObject>();
 		for(int y = 0; y < grid_height; y++){
 			for(int x = 0; x < grid_width; x++){
@@ -153,7 +153,7 @@ public class Grid : Singleton<Grid> {
 
 				if(prefab != null){
 					//Gameobjects are attached to grid transform as a child
-					GameObject go = (GameObject) Instantiate(prefab, new Vector3(tile_size * x, -tile_size * y, 0) + offset, Quaternion.identity, transform);
+					GameObject go = (GameObject) Instantiate(prefab, new Vector3(tile_size * x, tile_size * y, 0) + offset, Quaternion.identity, transform);
 					go.name = name;
 					spawnedObjects.Add(go);
 				}
@@ -170,16 +170,16 @@ public class Grid : Singleton<Grid> {
 		spawnedObjects.Clear();
 	}
 
-	bool IsWall(int x, int y){
+	public bool IsWall(int x, int y){
 		return tiles[x,y] == 'w';
 	}
-	bool IsGate(int x, int y){
+	public bool IsGate(int x, int y){
 		return tiles[x,y] == 'g';
 	}
-	bool BlocksPlayer(int x, int y){
+	public bool BlocksPlayer(int x, int y){
 		return IsWall(x,y) || IsGate(x,y);
 	}
-	bool BlocksGhost(int x, int y){
+	public bool BlocksGhost(int x, int y){
 		return IsWall(x,y);
 	}
 
