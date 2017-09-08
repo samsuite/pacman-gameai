@@ -539,8 +539,9 @@ GameObject:
   - component: {fileID: 2097337253}
   - component: {fileID: 2097337252}
   - component: {fileID: 2097337255}
+  - component: {fileID: 2097337256}
   m_Layer: 0
-  m_Name: Quad (1)
+  m_Name: pacman
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -609,6 +610,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2a1cb5edcb94844be44885b309d83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  current_direction: 1
+  current_direction: 4
   desired_direction: 4
-  speed: 0.01
+  speed: 0.1
+  grid_x: 0
+  grid_y: 0
+--- !u!114 &2097337256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2097337251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19aceacf753cb624686c1e4f93b0fa08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
