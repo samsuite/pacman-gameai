@@ -251,6 +251,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15200de1078b21c4eb6f4bb32c60a92b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapFile: {fileID: 4900000, guid: 61f8e243ba7c24e4f8074f1d4ea6132d, type: 3}
+  wall: {fileID: 1566905338556506, guid: 9e82b653326407349ae8c4cf4bff8488, type: 2}
+  dot: {fileID: 0}
+  gate: {fileID: 0}
+  ghost: {fileID: 0}
+  pacman: {fileID: 0}
+  fruit: {fileID: 0}
 --- !u!4 &1160378165
 Transform:
   m_ObjectHideFlags: 0
