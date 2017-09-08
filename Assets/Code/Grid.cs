@@ -9,9 +9,9 @@ public class Grid : Singleton<Grid> {
 	public GameObject wall, dot, gate, ghost, pacman, fruit;
 	public char[,] tiles;
 
-    const float tile_size = 0.5f;
-    const int grid_width = 28;
-    const int grid_height = 31;
+    public const float tile_size = 0.5f;
+    public const int grid_width = 28;
+    public const int grid_height = 31;
 
 	private List<GameObject> spawnedObjects;
 
