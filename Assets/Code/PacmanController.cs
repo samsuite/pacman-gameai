@@ -9,6 +9,8 @@ public class PacmanController : MonoBehaviour {
 
 	void Start () {
         movement = GetComponent<PixelPerfectGridMovement>();
+		//Pacman always must move
+		movement.current_direction = PixelPerfectGridMovement.Direction.left;
 	}
 	
 	void Update () {
@@ -27,5 +29,25 @@ public class PacmanController : MonoBehaviour {
             movement.desired_direction = PixelPerfectGridMovement.Direction.down;
         }
 
+	}
+
+	void OnTriggerEnter2D(Collider2D other) {
+		
+		if(other.tag == "Dot"){
+			//Award points, play noise
+
+			//Remove Dot
+			Destroy(other.gameObject);
+		}
+	}
+
+
+
+	void OnCollisionEnter2D(Collision2D coll) {
+		//Die and then restart
+		Debug.Log("hit");
+
+		//Die and then reload map
+		Grid.global.ReloadMap();
 	}
 }

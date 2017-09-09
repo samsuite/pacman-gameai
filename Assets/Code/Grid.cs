@@ -97,7 +97,7 @@ public class Grid : Singleton<Grid> {
 
 				GameObject prefab = null; //Prefab to be used to spawn
 				string name = x + "," + y; //Name of new object to be called
-
+				float depth = 0; //z depth of sprite (for having sprites go over walls)
 				switch (tileKey) {
 
 					case '0':
@@ -111,13 +111,15 @@ public class Grid : Singleton<Grid> {
 
 
 					case 'd':
-						prefab = dot;		
+						prefab = dot;
+						name = "Dot";
 						break;
 
 
 					case 'p':
 						//no powerups in this homework, defaults to dot
 						prefab = dot;
+						name = "Dot";
 						break;
 
 					case 'g':
@@ -126,6 +128,7 @@ public class Grid : Singleton<Grid> {
 
 					case 's':
 						prefab = ghost;
+						depth = -1f;
 						if(prefab != null){
 							name = ghost.name;
 						}
@@ -133,6 +136,7 @@ public class Grid : Singleton<Grid> {
 
 					case 'm':
 						prefab = pacman;
+						depth = -1f;
 						if(prefab != null){
 							name = pacman.name;
 						}
@@ -153,7 +157,7 @@ public class Grid : Singleton<Grid> {
 
 				if(prefab != null){
 					//Gameobjects are attached to grid transform as a child
-					GameObject go = (GameObject) Instantiate(prefab, new Vector3(tile_size * x, tile_size * y, 0) + offset, Quaternion.identity, transform);
+					GameObject go = (GameObject) Instantiate(prefab, new Vector3(tile_size * x, tile_size * y, depth) + offset, Quaternion.identity, transform);
 					go.name = name;
 					spawnedObjects.Add(go);
 				}

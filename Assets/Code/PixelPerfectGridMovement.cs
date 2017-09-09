@@ -23,6 +23,8 @@ public class PixelPerfectGridMovement : MonoBehaviour {
     public int grid_y;
 
     void Start () {
+		//Vertical offset to start in grid
+		transform.position += Grid.tile_size * new Vector3(0f,-.5f,0);
         unrounded_position = transform.position;
         set_grid_pos();
     }
@@ -219,7 +221,7 @@ public class PixelPerfectGridMovement : MonoBehaviour {
 
 
     // did i just pass the center of a grid tile?
-    bool just_passed_center () {
+    public bool just_passed_center () {
 
         Vector3 prev_unrounded_position = unrounded_position - (velocity*1.5f);
 
@@ -234,19 +236,19 @@ public class PixelPerfectGridMovement : MonoBehaviour {
 
 
 
-    bool can_move_up () {
+    public bool can_move_up () {
         return !Grid.global.BlocksGhost(grid_x, grid_y+1);
     }
 
-    bool can_move_down () {
+	public bool can_move_down () {
         return !Grid.global.BlocksGhost(grid_x, grid_y-1);
     }
 
-    bool can_move_left () {
+	public bool can_move_left () {
         return !Grid.global.BlocksGhost(grid_x-1, grid_y);
     }
 
-    bool can_move_right () {
+	public bool can_move_right () {
         return !Grid.global.BlocksGhost(grid_x+1, grid_y);
     }
 
