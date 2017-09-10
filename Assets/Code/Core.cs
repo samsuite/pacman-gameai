@@ -10,9 +10,11 @@ public class Core : Singleton<Core> {
     public Camera main_cam;
     public int current_score = 0;
     public int high_score = 0;
+    public float current_time = 0f;
 
     public Text current_score_text;
     public Text high_score_text;
+    public Text time_text;
 
     void Awake () {
         main_cam = Camera.main;
@@ -20,6 +22,8 @@ public class Core : Singleton<Core> {
     }
 
     void Update () {
+        current_time += Time.deltaTime;
+        time_text.text = current_time.ToString("F2");
         current_score_text.text = current_score.ToString("D4");
     }
 
@@ -44,6 +48,7 @@ public class Core : Singleton<Core> {
         }
 
         current_score = 0;
+        current_time = 0f;
         load_high_score();
         Grid.global.ReloadMap();
     }
