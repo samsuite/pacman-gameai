@@ -72,7 +72,9 @@ public class PixelPerfectGridMovement : MonoBehaviour {
 
         unrounded_position += velocity;
 
-
+        // wraparound
+        unrounded_position.x = ((unrounded_position.x + (Grid.tile_size*Grid.grid_width*1.5f)) % (Grid.tile_size*Grid.grid_width)) - (Grid.tile_size*Grid.grid_width*0.5f);
+        unrounded_position.y = ((unrounded_position.y + (Grid.tile_size*Grid.grid_height*1.5f)) % (Grid.tile_size*Grid.grid_height)) - (Grid.tile_size*Grid.grid_height*0.5f);
         
 
         // can switch directions along the same axis instantly
@@ -254,9 +256,19 @@ public class PixelPerfectGridMovement : MonoBehaviour {
                 }
             }
 
+            
+            if (grid_y + 1 >= Grid.grid_height) {
+                return !Grid.global.BlocksGhost(grid_x, 0);
+            }
+
             return !Grid.global.BlocksGhost(grid_x, grid_y+1);
         }
         else if (my_movement_layer == movement_layer.pacman) {
+
+            if (grid_y + 1 >= Grid.grid_height) {
+                return !Grid.global.BlocksPlayer(grid_x, 0);
+            }
+
             return !Grid.global.BlocksPlayer(grid_x, grid_y+1);
         }
 
@@ -273,9 +285,18 @@ public class PixelPerfectGridMovement : MonoBehaviour {
                 }
             }
 
+            if (grid_y - 1 < 0) {
+                return !Grid.global.BlocksGhost(grid_x, Grid.grid_height-1);
+            }
+
             return !Grid.global.BlocksGhost(grid_x, grid_y-1);
         }
         else if (my_movement_layer == movement_layer.pacman) {
+
+            if (grid_y - 1 < 0) {
+                return !Grid.global.BlocksPlayer(grid_x, Grid.grid_height-1);
+            }
+
             return !Grid.global.BlocksPlayer(grid_x, grid_y-1);
         }
 
@@ -292,9 +313,18 @@ public class PixelPerfectGridMovement : MonoBehaviour {
                 }
             }
 
+            if (grid_x - 1 < 0) {
+                return !Grid.global.BlocksGhost(Grid.grid_width-1, grid_y);
+            }
+
             return !Grid.global.BlocksGhost(grid_x-1, grid_y);
         }
         else if (my_movement_layer == movement_layer.pacman) {
+
+            if (grid_x - 1 < 0) {
+                return !Grid.global.BlocksPlayer(Grid.grid_width-1, grid_y);
+            }
+
             return !Grid.global.BlocksPlayer(grid_x-1, grid_y);
         }
 
@@ -311,9 +341,18 @@ public class PixelPerfectGridMovement : MonoBehaviour {
                 }
             }
 
+            if (grid_x + 1 >= Grid.grid_width) {
+                return !Grid.global.BlocksGhost(0, grid_y);
+            }
+
             return !Grid.global.BlocksGhost(grid_x+1, grid_y);
         }
         else if (my_movement_layer == movement_layer.pacman) {
+
+            if (grid_x + 1 >= Grid.grid_width) {
+                return !Grid.global.BlocksPlayer(0, grid_y);
+            }
+
             return !Grid.global.BlocksPlayer(grid_x+1, grid_y);
         }
 
