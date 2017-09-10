@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 0d40d34bd9d63b6498eaa05d47f9f364, type: 2}
+  - {fileID: 2100000, guid: 9516adb92bfdbb9419ed97ac09c40df7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,6 +140,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19aceacf753cb624686c1e4f93b0fa08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 2800000, guid: 4710fe715f265fe45928165d4b5ef7e4, type: 3}
+  - {fileID: 2800000, guid: 3d9633e3e21472f4d98526126cdab1f3, type: 3}
+  - {fileID: 2800000, guid: 5c298ca87180eea40a0aba86798c32fe, type: 3}
+  - {fileID: 2800000, guid: 3d9633e3e21472f4d98526126cdab1f3, type: 3}
 --- !u!114 &114657691404048694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2a1cb5edcb94844be44885b309d83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  my_movement_layer: 0
   current_direction: 4
   desired_direction: 4
   speed: 0.065

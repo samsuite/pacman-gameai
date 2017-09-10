@@ -280,11 +280,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4793653808215290, guid: 34a8899884381f448866a6782210525a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 2.880472
+      value: 2.78
       objectReference: {fileID: 0}
     - target: {fileID: 4793653808215290, guid: 34a8899884381f448866a6782210525a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -1.3443809
+      value: 0.278
       objectReference: {fileID: 0}
     - target: {fileID: 4793653808215290, guid: 34a8899884381f448866a6782210525a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -310,6 +310,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 23318153021222052, guid: 34a8899884381f448866a6782210525a,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9516adb92bfdbb9419ed97ac09c40df7, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 34a8899884381f448866a6782210525a, type: 2}
   m_IsPrefabParent: 0
@@ -347,6 +352,7 @@ MonoBehaviour:
   ghost: {fileID: 1140016391852916, guid: 36d072bdad1d6ba42b36eda6477ef87c, type: 2}
   pacman: {fileID: 1162454324697598, guid: 34a8899884381f448866a6782210525a, type: 2}
   fruit: {fileID: 0}
+  all_ghosts: []
 --- !u!4 &1160378165
 Transform:
   m_ObjectHideFlags: 0
@@ -436,11 +442,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4639146065189916, guid: ce45107dc6bb80c44b46e8253eb786b7, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.037734747
+      value: 0.905
       objectReference: {fileID: 0}
     - target: {fileID: 4639146065189916, guid: ce45107dc6bb80c44b46e8253eb786b7, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.17923939
+      value: 0.273
       objectReference: {fileID: 0}
     - target: {fileID: 4639146065189916, guid: ce45107dc6bb80c44b46e8253eb786b7, type: 2}
       propertyPath: m_LocalPosition.z
