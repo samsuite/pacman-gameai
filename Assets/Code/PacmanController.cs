@@ -70,6 +70,7 @@ public class PacmanController : MonoBehaviour {
 
 			//Remove Dot
 			Destroy(other.gameObject);
+            Core.global.current_score += 1;
 		}
 	}
 
@@ -80,6 +81,6 @@ public class PacmanController : MonoBehaviour {
 		Debug.Log("hit");
 
 		//Die and then reload map
-		Grid.global.ReloadMap();
+		Core.global.die();
 	}
 }
