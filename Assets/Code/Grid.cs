@@ -19,6 +19,7 @@ public class Grid : Singleton<Grid> {
     public const float tile_size = 0.5f;
     public const int grid_width = 28;
     public const int grid_height = 31;
+	public int dotsLeft = 0;
 
 	private List<GameObject> spawnedObjects;
 
@@ -89,6 +90,7 @@ public class Grid : Singleton<Grid> {
 		//Fits into debug grid
 		Vector3 offset = new Vector3(- (grid_width - 1) * .5f * tile_size, - (grid_height - 1) * .5f * tile_size, 0);
 		spawnedObjects = new List<GameObject>();
+		dotsLeft = 0;
 		for(int y = 0; y < grid_height; y++){
 			for(int x = 0; x < grid_width; x++){
 				char tileKey = tiles[x,y];
@@ -120,6 +122,7 @@ public class Grid : Singleton<Grid> {
 					case 'd':
 						prefab = dot;
 						name = "Dot";
+						dotsLeft++;
 						break;
 
 
@@ -127,6 +130,7 @@ public class Grid : Singleton<Grid> {
 						//no powerups in this homework, defaults to dot
 						prefab = dot;
 						name = "Dot";
+						dotsLeft++;
 						break;
 
 					case 'g':

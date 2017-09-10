@@ -71,6 +71,10 @@ public class PacmanController : MonoBehaviour {
 			//Remove Dot
 			Destroy(other.gameObject);
             Core.global.current_score += 1;
+			Grid.global.dotsLeft--;
+			if(Grid.global.dotsLeft <= 0){
+				Core.global.next_level();
+			}
 		}
 	}
 

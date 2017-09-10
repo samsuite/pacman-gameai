@@ -52,4 +52,8 @@ public class Core : Singleton<Core> {
         load_high_score();
         Grid.global.ReloadMap();
     }
+
+	public void next_level(){
+		Grid.global.ReloadMap();
+	}
 }
