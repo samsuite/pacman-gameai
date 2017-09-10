@@ -5,9 +5,16 @@ using UnityEngine;
 
 public class Grid : Singleton<Grid> {
 
+    public struct int_pair {
+        public int x;
+        public int y;
+    }
+
 	public TextAsset mapFile; //.csv or .tsv map file
 	public GameObject wall, dot, gate, ghost, pacman, fruit;
 	public char[,] tiles;
+
+    public List<GhostController> all_ghosts = new List<GhostController>();
 
     public const float tile_size = 0.5f;
     public const int grid_width = 28;
@@ -164,6 +171,9 @@ public class Grid : Singleton<Grid> {
 
 			}	
 		}
+
+        // all ghosts have been spawned. go ahead and populate a list of them
+        all_ghosts = new List<GhostController>(FindObjectsOfType(typeof(GhostController)) as GhostController[]);
 	}
 
 	void DestroyMap(){

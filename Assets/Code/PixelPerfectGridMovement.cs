@@ -12,6 +12,13 @@ public class PixelPerfectGridMovement : MonoBehaviour {
         none
     };
 
+    public enum movement_layer {
+        pacman,
+        ghost
+    };
+
+    public movement_layer my_movement_layer;
+
     public Direction current_direction = Direction.none;
     public Direction desired_direction = Direction.none;
     public float speed = 1f;
@@ -237,24 +244,85 @@ public class PixelPerfectGridMovement : MonoBehaviour {
 
 
     public bool can_move_up () {
-        return !Grid.global.BlocksGhost(grid_x, grid_y+1);
+
+        if (my_movement_layer == movement_layer.ghost) {
+
+            // don't move into another ghost
+            for (int i = 0; i < Grid.global.all_ghosts.Count; i++) {
+                if (Grid.global.all_ghosts[i].movement.grid_x == grid_x && Grid.global.all_ghosts[i].movement.grid_y == grid_y+1) {
+                    return false;
+                }
+            }
+
+            return !Grid.global.BlocksGhost(grid_x, grid_y+1);
+        }
+        else if (my_movement_layer == movement_layer.pacman) {
+            return !Grid.global.BlocksPlayer(grid_x, grid_y+1);
+        }
+
+        return false;
     }
 
 	public bool can_move_down () {
-        return !Grid.global.BlocksGhost(grid_x, grid_y-1);
+        if (my_movement_layer == movement_layer.ghost) {
+
+            // don't move into another ghost
+            for (int i = 0; i < Grid.global.all_ghosts.Count; i++) {
+                if (Grid.global.all_ghosts[i].movement.grid_x == grid_x && Grid.global.all_ghosts[i].movement.grid_y == grid_y-1) {
+                    return false;
+                }
+            }
+
+            return !Grid.global.BlocksGhost(grid_x, grid_y-1);
+        }
+        else if (my_movement_layer == movement_layer.pacman) {
+            return !Grid.global.BlocksPlayer(grid_x, grid_y-1);
+        }
+
+        return false;
     }
 
 	public bool can_move_left () {
-        return !Grid.global.BlocksGhost(grid_x-1, grid_y);
+        if (my_movement_layer == movement_layer.ghost) {
+
+            // don't move into another ghost
+            for (int i = 0; i < Grid.global.all_ghosts.Count; i++) {
+                if (Grid.global.all_ghosts[i].movement.grid_x == grid_x-1 && Grid.global.all_ghosts[i].movement.grid_y == grid_y) {
+                    return false;
+                }
+            }
+
+            return !Grid.global.BlocksGhost(grid_x-1, grid_y);
+        }
+        else if (my_movement_layer == movement_layer.pacman) {
+            return !Grid.global.BlocksPlayer(grid_x-1, grid_y);
+        }
+
+        return false;
     }
 
 	public bool can_move_right () {
-        return !Grid.global.BlocksGhost(grid_x+1, grid_y);
+        if (my_movement_layer == movement_layer.ghost) {
+
+            // don't move into another ghost
+            for (int i = 0; i < Grid.global.all_ghosts.Count; i++) {
+                if (Grid.global.all_ghosts[i].movement.grid_x == grid_x+1 && Grid.global.all_ghosts[i].movement.grid_y == grid_y) {
+                    return false;
+                }
+            }
+
+            return !Grid.global.BlocksGhost(grid_x+1, grid_y);
+        }
+        else if (my_movement_layer == movement_layer.pacman) {
+            return !Grid.global.BlocksPlayer(grid_x+1, grid_y);
+        }
+
+        return false;
     }
 
 
 
-    bool can_continue_in_current_direction () {
+    public bool can_continue_in_current_direction () {
         switch (current_direction) {
 
             case Direction.up:

@@ -140,6 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f2a1cb5edcb94844be44885b309d83d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  my_movement_layer: 1
   current_direction: 4
   desired_direction: 4
   speed: 0.065
