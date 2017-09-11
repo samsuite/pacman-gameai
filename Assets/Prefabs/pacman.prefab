@@ -158,7 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   my_movement_layer: 0
   current_direction: 4
-  desired_direction: 2
+  desired_direction: 4
   speed: 0.065
   grid_x: 0
   grid_y: 0

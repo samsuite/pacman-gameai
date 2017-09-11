@@ -81,9 +81,6 @@ public class PacmanController : MonoBehaviour {
 
 
 	void OnCollisionEnter2D(Collision2D coll) {
-		//Die and then restart
-		Debug.Log("hit");
-
 		//Die and then reload map
 		Core.global.die();
 	}
