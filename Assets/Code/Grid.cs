@@ -29,6 +29,7 @@ public class Grid : Singleton<Grid> {
 	}
 
 	void Start () {
+		spawnedObjects = new List<GameObject>();
 		SetupMap();
 	}
 	
@@ -80,16 +81,16 @@ public class Grid : Singleton<Grid> {
 		}
 	}
 
-	public void ReloadMap(){
-		DestroyMap();
-		SetupMap();
+	public void ReloadMap(bool resetDots = true){
+		DestroyMap(resetDots);
+		SetupMap(resetDots);
 	}
 
-	void SetupMap(){
+	void SetupMap(bool resetDots = true){
 		//Map objects are loaded into world
 		//Fits into debug grid
 		Vector3 offset = new Vector3(- (grid_width - 1) * .5f * tile_size, - (grid_height - 1) * .5f * tile_size, 0);
-		spawnedObjects = new List<GameObject>();
+
 		dotsLeft = 0;
 		for(int y = 0; y < grid_height; y++){
 			for(int x = 0; x < grid_width; x++){
@@ -166,7 +167,7 @@ public class Grid : Singleton<Grid> {
 
 				}
 
-				if(prefab != null){
+				if(prefab != null && (resetDots || name != "Dot")){
 					//Gameobjects are attached to grid transform as a child
 					GameObject go = (GameObject) Instantiate(prefab, new Vector3(tile_size * x, tile_size * y, depth) + offset, Quaternion.identity, transform);
 					go.name = name;
@@ -180,12 +181,19 @@ public class Grid : Singleton<Grid> {
         all_ghosts = new List<GhostController>(FindObjectsOfType(typeof(GhostController)) as GhostController[]);
 	}
 
-	void DestroyMap(){
+	void DestroyMap(bool resetDots = true){
 		//Map must be destroyed before it is setup again (like when player dies and game restarts)
+		List<GameObject> extraDots = new List<GameObject>();
 		foreach(GameObject child in spawnedObjects){
-			Destroy(child);
+			if(resetDots || child == null || child.tag != "Dot"){
+				Destroy(child);
+			}
+			else{
+				extraDots.Add(child);
+			}
 		}
 		spawnedObjects.Clear();
+		spawnedObjects.AddRange(extraDots);
 	}
 
     public int GetGridX (float xpos) {
